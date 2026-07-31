@@ -1,23 +1,288 @@
-soy un estudiante de sistemas y estoy aprendiendo Desarrollo-web necesito crear una
-una hoja de vida con los siguientes:
-
-... escriben los intems que les envie al correo 
-
-- fotos de perfil 
-- perfil
--  experiencia laboral
--  educacion
--  certificaciones
-- contacto( correo, celular)
--  redes sociales
 
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoja de Vida | Juan Manuel Moreno Muñoz</title>
+  <meta name="description" content="Hoja de vida en línea de Juan Manuel Moreno Muñoz, estudiante de Ingeniería de Sistemas">
+  <style>
+    /* ---------- Variables globales ---------- */
+    :root {
+      --azul-oscuro: #10233d;
+      --azul-medio: #1d3f66;
+      --acento: #3fa9f5;
+      --gris-texto: #4a5568;
+      --gris-claro: #f4f6f9;
+      --blanco: #ffffff;
+      --borde: #e2e8f0;
+      --radio: 10px;
+      --fuente-titulo: 'Segoe UI', Verdana, sans-serif;
+      --fuente-texto: 'Segoe UI', Arial, sans-serif;
+    }
 
-adicional qioero que me entres un resumen de las: etiiquetas usadas
-atributos 
-y css con su definicion
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-udestes 
-subir a prod de la cv ( en el mismo link de produccion... vercel.app/IA)  
-analizar el css  de la IA
+    body {
+      font-family: var(--fuente-texto);
+      background-color: var(--gris-claro);
+      color: var(--gris-texto);
+      line-height: 1.6;
+    }
 
+    /* ---------- Contenedor general ---------- */
+    .contenedor {
+      max-width: 900px;
+      margin: 40px auto;
+      background: var(--blanco);
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    /* ---------- Encabezado / perfil ---------- */
+    header.perfil {
+      background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
+      color: var(--blanco);
+      padding: 40px 30px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .foto-perfil img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--acento);
+    }
+
+    .datos-perfil h1 {
+      font-family: var(--fuente-titulo);
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    .datos-perfil h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--acento);
+      margin-bottom: 10px;
+    }
+
+    .datos-perfil p {
+      max-width: 550px;
+      font-size: 0.95rem;
+      color: #dbe7f5;
+    }
+
+    /* ---------- Navegación interna (redes sociales) ---------- */
+    nav.redes {
+      background: var(--azul-oscuro);
+      padding: 12px 30px;
+    }
+
+    nav.redes ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav.redes a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-size: 0.9rem;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    nav.redes a:hover,
+    nav.redes a:focus-visible {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    /* ---------- Secciones principales ---------- */
+    main {
+      padding: 30px;
+    }
+
+    section {
+      margin-bottom: 35px;
+    }
+
+    section h3 {
+      font-family: var(--fuente-titulo);
+      color: var(--azul-oscuro);
+      font-size: 1.25rem;
+      border-bottom: 2px solid var(--acento);
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+    }
+
+    /* ---------- Experiencia y educación (tarjetas) ---------- */
+    article.tarjeta {
+      background: var(--gris-claro);
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    article.tarjeta h4 {
+      color: var(--azul-medio);
+      font-size: 1.05rem;
+    }
+
+    /* ---------- Certificaciones ---------- */
+    ul.certificaciones {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    ul.certificaciones li {
+      background: var(--gris-claro);
+      border-left: 4px solid var(--acento);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    /* ---------- Contacto ---------- */
+    table.contacto {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table.contacto td {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--borde);
+    }
+
+    table.contacto td:first-child {
+      font-weight: 600;
+      color: var(--azul-oscuro);
+      width: 140px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px;
+      font-size: 0.8rem;
+      color: #94a3b8;
+      border-top: 1px solid var(--borde);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 600px) {
+      header.perfil {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav.redes ul {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+
+    <!-- ENCABEZADO / PERFIL -->
+    <header class="perfil">
+      <div class="foto-perfil">
+        <!-- Cambia la ruta por la ubicación real de tu imagen en el repositorio -->
+        <img src="trabajos-de-clase/imagen.jpg alt="Foto de perfil de Juan Manuel Moreno Muñoz">
+      </div>
+      <div class="datos-perfil">
+        <h1>Juan Manuel Moreno Muñoz</h1>
+        <h2>Estudiante de Ingeniería de Sistemas | Ciberseguridad</h2>
+        <p>
+          Soy estudiante de Ingeniería de Sistemas, estudiante de ciberseguridad en Cisco
+          y basquetbolista de la UDM.
+        </p>
+      </div>
+    </header>
+
+    <!-- REDES SOCIALES -->
+    <nav class="redes" aria-label="Redes sociales">
+      <ul>
+        <li><a href="https://github.com/juanmanu12-dot/Desarrollo-web.git" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      </ul>
+    </nav>
+
+    <main>
+
+      <!-- EXPERIENCIA LABORAL -->
+      <section id="experiencia">
+        <h3>Experiencia Laboral</h3>
+        <article class="tarjeta">
+          <h4>Ciberseguridad en Cisco</h4>
+        </article>
+        <article class="tarjeta">
+          <h4>Ciberseguridad en Cisco</h4>
+        </article>
+        <article class="tarjeta">
+          <h4>Ciberseguridad en Cisco</h4>
+        </article>
+        <article class="tarjeta">
+          <h4>Ciberseguridad en Cisco</h4>
+        </article>
+      </section>
+
+      <!-- EDUCACIÓN -->
+      <section id="educacion">
+        <h3>Educación</h3>
+        <article class="tarjeta">
+          <h4>Bachiller</h4>
+        </article>
+        <article class="tarjeta">
+          <h4>Estudiante de Ingeniería de Sistemas</h4>
+        </article>
+      </section>
+
+      <!-- CERTIFICACIONES -->
+      <section id="certificaciones">
+        <h3>Certificaciones</h3>
+        <ul class="certificaciones">
+          <li>AWS Well-Architected Foundations</li>
+          <li>Ciberseguridad en Cisco</li>
+        </ul>
+      </section>
+
+      <!-- CONTACTO -->
+      <section id="contacto">
+        <h3>Contacto</h3>
+        <table class="contacto">
+          <tr>
+            <td>Correo:</td>
+            <td><a href="mailto:juanmanuel@gmail.com">juanmanuel@gmail.com</a></td>
+          </tr>
+          <tr>
+            <td>Celular:</td>
+            <td><a href="tel:+573111234568">311 123 4568</a></td>
+          </tr>
+        </table>
+      </section>
+
+    </main>
+
+    <footer>
+      &copy; 2026 Juan Manuel Moreno Muñoz. Hoja de vida creada con HTML y CSS.
+    </footer>
+
+  </div>
+
+</body>
+</html>
